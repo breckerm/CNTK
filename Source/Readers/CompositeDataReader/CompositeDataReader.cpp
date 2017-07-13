@@ -35,9 +35,11 @@ CompositeDataReader::CompositeDataReader(const ConfigParameters& config) :
     wstring action = config(L"action", L"");
     bool isActionWrite = AreEqualIgnoreCase(action, L"write");
 
-    // We currently by default using numeric keys for ctf and image deserializers.
+    // We currently by default using numeric keys for ctf, cbf and image deserializers.
     bool useNumericSequenceKeys = ContainsDeserializer(config, L"CNTKTextFormatDeserializer") ||
-        ContainsDeserializer(config, L"ImageDeserializer") || ContainsDeserializer(config, L"Base64ImageDeserializer");
+        ContainsDeserializer(config, L"CNTKBinaryFormatDeserializer") ||
+        ContainsDeserializer(config, L"ImageDeserializer") || 
+        ContainsDeserializer(config, L"Base64ImageDeserializer");
 
     useNumericSequenceKeys = config(L"useNumericSequenceKeys", useNumericSequenceKeys);
 
